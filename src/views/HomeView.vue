@@ -1,18 +1,36 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld />
-  </div>
+  <FormComponent @updateEmployee="setEmployee" />
+  <TableComponent @showPreview="showPreview" />
+  <PreviewComponent :employee="selectedEmployee" :kriteria="kriteria" :visible="showPreviewSection" />
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import FormComponent from "@/components/FormComponent.vue";
+import PreviewComponent from "@/components/PreviewComponent.vue";
+import TableComponent from "@/components/TableComponent.vue";
 
 export default {
   name: "HomeView",
   components: {
-    HelloWorld,
+    FormComponent,
+    TableComponent,
+    PreviewComponent,
+  },
+  data() {
+    return {
+      selectedEmployee: "",
+      kriteria: [],
+      showPreviewSection: false,
+    };
+  },
+  methods: {
+    setEmployee(employee) {
+      this.selectedEmployee = employee;
+    },
+    showPreview(kriteria) {
+      this.kriteria = kriteria;
+      this.showPreviewSection = true;
+    },
   },
 };
 </script>

@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: FormComponent,
+  name: "FormComponent",
   data() {
     return {
       selectedEmployee: "",

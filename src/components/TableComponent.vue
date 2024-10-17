@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  name: TableComponent,
+  name: "TableComponent",
   data() {
     return {
       kriteria: [
