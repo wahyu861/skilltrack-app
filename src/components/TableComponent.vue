@@ -1,23 +1,31 @@
 <template>
   <div class="container">
-    <table class="table">
+    <div class="row">
+      <label class="mt-2 fw-bold" style="font-size: 12px; margin-left: -50px; color: #000">Tabel Penilaian</label>
+    </div>
+    <table class="table table-striped table-bordered mt-3">
       <thead>
-        <tr>
-          <th>No</th>
-          <th>Kriteria Penilaian</th>
-          <th>Nilai</th>
+        <tr class="table-warning">
+          <th class="text-center">No</th>
+          <th class="text-center">Kriteria Penilaian</th>
+          <th class="text-center">Nilai</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(item, index) in kriteria" :key="index">
-          <td>{{ index + 1 }}</td>
-          <td>{{ item.text }}</td>
-          <td><input type="number" v-model="item.score" class="form-control" /></td>
+          <td class="text-center">{{ index + 1 }}</td>
+          <td class="text-start">{{ item.text }}</td>
+          <td class="text-center">
+            <input type="number" v-model="item.score" class="form-control" min="1" max="5" @input="validateScore(item)" />
+          </td>
         </tr>
       </tbody>
     </table>
-    <button class="btn btn-danger" @click="reset">Reset</button>
-    <Putton class="btn btn-primary" @click="preview">Preview</Putton>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-danger" @click="reset">Reset</button>
+      <button class="btn btn-primary" @click="preview">Preview</button>
+    </div>
   </div>
 </template>
 
@@ -41,10 +49,26 @@ export default {
   methods: {
     reset() {
       this.kriteria.forEach((item) => (item.score = 0));
+      this.$emit("resetPreview");
     },
     preview() {
       this.$emit("showPreview", this.kriteria);
     },
+    validateScore(item) {
+      if (item.score < 1) {
+        item.score = 1;
+      } else if (item.score > 5) {
+        item.score = 5;
+      }
+    },
   },
 };
 </script>
+
+<style>
+button {
+  margin-left: 20px !important;
+  margin-top: 10px !important;
+  width: 10%;
+}
+</style>

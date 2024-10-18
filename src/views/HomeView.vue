@@ -1,7 +1,7 @@
 <template>
-  <FormComponent @updateEmployee="setEmployee" />
-  <TableComponent @showPreview="showPreview" />
-  <PreviewComponent :employee="selectedEmployee" :kriteria="kriteria" :visible="showPreviewSection" />
+  <FormComponent @selectedKaryawan="updateSelectedKaryawan" />
+  <TableComponent @showPreview="showPreview" @resetPreview="hidePreview" />
+  <PreviewComponent :item="selectedKaryawan" :kriteria="kriteria" :visible="showPreviewSection" />
 </template>
 
 <script>
@@ -18,7 +18,7 @@ export default {
   },
   data() {
     return {
-      selectedEmployee: "",
+      selectedKaryawan: null,
       kriteria: [],
       showPreviewSection: false,
     };
@@ -30,6 +30,13 @@ export default {
     showPreview(kriteria) {
       this.kriteria = kriteria;
       this.showPreviewSection = true;
+      this.$emit("showPreviewSection");
+    },
+    hidePreview() {
+      this.showPreviewSection = false;
+    },
+    updateSelectedKaryawan(karyawan) {
+      this.selectedKaryawan = karyawan;
     },
   },
 };
