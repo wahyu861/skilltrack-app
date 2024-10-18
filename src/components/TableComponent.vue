@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row">
-      <label class="mt-2 fw-bold" style="font-size: 12px; margin-left: -50px; color: #000">Tabel Penilaian</label>
+      <label class="mt-2 fw-bold" style="font-size: 12px; margin-left: -35px; color: #000">Tabel Penilaian</label>
     </div>
     <table class="table table-striped table-bordered mt-3">
       <thead>

@@ -1,7 +1,7 @@
 <template>
   <nav>
     <router-link to="/" class="text-decoration-none">Penilaian</router-link> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <router-link to="/about" class="text-decoration-none">Absensi</router-link>
+    <router-link to="/absensi" class="text-decoration-none">Absensi</router-link>
   </nav>
   <router-view />
 </template>
@@ -18,7 +18,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
 
 nav {

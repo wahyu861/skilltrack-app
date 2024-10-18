@@ -10,7 +10,7 @@ import PreviewComponent from "@/components/PreviewComponent.vue";
 import TableComponent from "@/components/TableComponent.vue";
 
 export default {
-  name: "HomeView",
+  name: "PenilaianView",
   components: {
     FormComponent,
     TableComponent,

@@ -91,6 +91,6 @@ export default {
 <style>
 .download {
   margin: 20px 0;
-  width: 15%;
+  width: 20%;
 }
 </style>
