@@ -17,17 +17,21 @@ export default {
   name: "FormComponent",
   data() {
     return {
-      selectedKaryawan: null, // Mengubah dari string kosong menjadi null
+      selectedKaryawan: "",
       dataKaryawan: [
-        { nama: "M. Achsan Nauval", posisi: "Developer", alamat: "Jln. Soekarno Hatta, No. A17, Lowokwaru - Malang" },
+        { nama: "M. Achsan Nauval", posisi: "Data Analyst", alamat: "Dusun Pade'an, Desa Jarangan, Rejoso - Pasuruan" },
         { nama: "M. Eko Wahyudi", posisi: "Developer", alamat: "Jln. Pucangan, Purworejo - Pasuruan" },
-        { nama: "M. Zainal Fanani", posisi: "Developer", alamat: "Jln. Soekarno Hatta, No. A17, Lowokwaru - Malang" },
+        { nama: "M. Zainal Fanani", posisi: "UI/UX Designer", alamat: "Jln. Soekarno Hatta, No. A17, Lowokwaru - Malang" },
       ],
     };
   },
   methods: {
     emitSelectedKaryawan() {
-      this.$emit("selectedKaryawan", this.selectedKaryawan); // Emit seluruh objek karyawan yang dipilih
+      if (this.selectedKaryawan) {
+        this.$emit("selectedKaryawan", this.selectedKaryawan);
+      } else {
+        alert("Pilih karyawan terlebih dahulu.");
+      }
     },
   },
 };

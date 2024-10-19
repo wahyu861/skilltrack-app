@@ -18,25 +18,25 @@ export default {
   },
   data() {
     return {
-      selectedKaryawan: null,
+      selectedKaryawan: "",
       kriteria: [],
       showPreviewSection: false,
     };
   },
   methods: {
-    setEmployee(employee) {
-      this.selectedEmployee = employee;
+    updateSelectedKaryawan(karyawan) {
+      this.selectedKaryawan = karyawan;
     },
     showPreview(kriteria) {
+      if (!this.selectedKaryawan || this.selectedKaryawan === "") {
+        alert("Silahkan pilih karyawan terlebih dahulu.");
+        return;
+      }
       this.kriteria = kriteria;
       this.showPreviewSection = true;
-      this.$emit("showPreviewSection");
     },
     hidePreview() {
       this.showPreviewSection = false;
-    },
-    updateSelectedKaryawan(karyawan) {
-      this.selectedKaryawan = karyawan;
     },
   },
 };

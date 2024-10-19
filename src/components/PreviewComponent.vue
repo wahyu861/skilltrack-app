@@ -10,8 +10,8 @@
         <ol class="list-group list-group-numbered">
           <li v-for="(item, index) in kriteria" :key="index" class="list-group-item">
             {{ item.text }}
-            <div v-if="item.score > 0" class="stars ms-3">
-              <span v-for="n in item.score" :key="n" class="text-warning">&#9733;</span>
+            <div v-if="item.score && item.score > 0" class="stars ms-3">
+              <span v-for="n in item.score" :key="n" class="star">&#9733;</span>
             </div>
           </li>
         </ol>
@@ -42,16 +42,17 @@ export default {
   props: ["item", "kriteria", "visible"],
   computed: {
     percentage() {
-      const totalScore = this.kriteria.reduce((sum, item) => sum + item.score, 0);
+      const totalScore = this.kriteria.reduce((sum, item) => sum + (item.score || 0), 0);
       return ((totalScore / (this.kriteria.length * 5)) * 100).toFixed(2);
     },
     grade() {
       const perc = this.percentage;
       if (perc >= 90) return "A";
-      if (perc >= 80) return "B";
-      if (perc >= 70) return "C";
-      if (perc >= 60) return "D";
-      return "E";
+      if (perc >= 70) return "B";
+      if (perc >= 50) return "C";
+      if (perc >= 25) return "D";
+      if (perc >= 6) return "E";
+      return "F";
     },
   },
   methods: {
@@ -59,7 +60,7 @@ export default {
       const pdfContent = this.$refs.pdfContent;
 
       const canvas = await html2canvas(pdfContent, {
-        scale: 2,
+        scale: window.devicePixelRatio,
       });
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF();
@@ -91,6 +92,12 @@ export default {
 <style>
 .download {
   margin: 20px 0;
-  width: 20%;
+  width: auto;
+  padding: 10px 20px;
+}
+
+.star {
+  color: #1e40af;
+  font-size: 24px;
 }
 </style>
