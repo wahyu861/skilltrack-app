@@ -43,7 +43,7 @@ export default {
   computed: {
     percentage() {
       const totalScore = this.kriteria.reduce((sum, item) => sum + (item.score || 0), 0);
-      return ((totalScore / (this.kriteria.length * 5)) * 100).toFixed(2);
+      return Math.floor((totalScore / 40) * 100);
     },
     grade() {
       const perc = this.percentage;
