@@ -3,12 +3,12 @@
     <div class="row">
       <label class="mt-2 fw-bold" style="font-size: 12px; margin-left: -35px; color: #000">Tabel Penilaian</label>
     </div>
-    <table class="table table-striped table-bordered mt-3">
+    <table class="table table-striped table-bordered mt-1">
       <thead>
-        <tr class="table-warning">
-          <th class="text-center">No</th>
-          <th class="text-center">Kriteria Penilaian</th>
-          <th class="text-center">Nilai</th>
+        <tr>
+          <th class="text-center" style="background-color: #a5a5a5; color: #fff">No</th>
+          <th class="text-center" style="background-color: #a5a5a5; color: #fff">Kriteria Penilaian</th>
+          <th class="text-center" style="background-color: #a5a5a5; color: #fff">Nilai</th>
         </tr>
       </thead>
       <tbody>
